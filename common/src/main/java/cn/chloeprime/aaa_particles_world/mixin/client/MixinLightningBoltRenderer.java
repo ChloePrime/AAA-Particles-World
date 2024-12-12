@@ -19,7 +19,7 @@ public class MixinLightningBoltRenderer {
             at = @At("HEAD"), cancellable = true
     )
     private void disableVanillaLightningModelAndPlayEffek(LightningBolt bolt, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, CallbackInfo ci) {
-        if (!AAAParticlesWorldClient.isEffeksEnabled()) {
+        if (AAAParticlesWorldClient.isEffeksDisabled()) {
             return;
         }
         if (((EffekLightningBolt) bolt).aaaParticles$getEffekTicket()) {
