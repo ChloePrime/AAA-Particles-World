@@ -34,6 +34,10 @@ dependencies {
     /// AAA Particles 1.4.8
     modImplementation 'curse.maven:aaa-particles-979809:5874444-sources-5984419'
 
+    // Forge Config
+    modApi include("fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${rootProject.forge_config_api_version}")
+    compileOnly 'com.electronwill.night-config:toml:3.6.4'
+
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
     shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
 }

@@ -1,7 +1,7 @@
 package cn.chloeprime.aaa_particles_world.mixin;
 
 import cn.chloeprime.aaa_particles_world.client.AAAParticlesWorldClient;
-import cn.chloeprime.aaa_particles_world.client.ExplosionEffek;
+import cn.chloeprime.aaa_particles_world.client.content.ExplosionEffek;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.core.particles.ParticleOptions;
@@ -17,7 +17,7 @@ public class MixinExplosion {
             method = "finalizeExplosion",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
     private void betterExplodeParticles(Level level, ParticleOptions vanillaExplosion, double x, double y, double z, double dx, double dy, double dz, Operation<Void> original) {
-        if (AAAParticlesWorldClient.isEffeksDisabled()) {
+        if (!ExplosionEffek.isEnabled()) {
             original.call(level, vanillaExplosion, x, y, z, dx, dy, dz);
             return;
         }
