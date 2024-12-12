@@ -1,0 +1,15 @@
+{
+  "required": true,
+  "package": "cn.chloeprime.aaa_particles_world.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "client": [
+    "client.MixinLightningBoltRenderer"
+  ],
+  "mixins": [
+    "MixinLightningBolt"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

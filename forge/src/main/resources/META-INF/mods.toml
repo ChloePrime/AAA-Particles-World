@@ -1,0 +1,41 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+#issueTrackerURL = ""
+license = "MIT"
+
+[[mods]]
+modId = "aaa_particles_world"
+version = "${version}"
+displayName = "AAAParticles: World"
+authors = "ChloePrime"
+description = 'The lightning is back!'
+logoFile = "assets/aaa_particles_world/icon.png"
+
+[[dependencies.aaa_particles_world]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.aaa_particles_world]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.aaa_particles_world]]
+modId = "architectury"
+mandatory = true
+versionRange = "[9.2,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.aaa_particles_world]]
+modId = "aaa_particles"
+mandatory = true
+versionRange = "[1.20.1-1,)"
+ordering = "AFTER"
+side = "BOTH"
+

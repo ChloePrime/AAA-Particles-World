@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "aaa_particles_world",
+  "version": "${version}",
+  "name": "AAAParticles: World",
+  "description": "The lightning is back!",
+  "authors": [
+    "ChloePrime"
+  ],
+  "contact": {
+    "homepage": ""
+  },
+  "license": "MIT",
+  "icon": "assets/aaa_particles_world/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "cn.chloeprime.aaa_particles_world.fabric.AAAParticlesWorldModFabric"
+    ],
+    "client": [
+      "cn.chloeprime.aaa_particles_world.fabric.client.AAAParticlesWorldModFabricClient"
+    ]
+  },
+  "mixins": [
+    "aaa_particles_world.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.15.10",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "architectury": ">=9.2",
+    "fabric-api": "*"
+  },
+  "suggests": {
+  }
+}
