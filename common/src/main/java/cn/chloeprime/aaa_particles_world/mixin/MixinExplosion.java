@@ -5,6 +5,8 @@ import cn.chloeprime.aaa_particles_world.client.content.ExplosionEffek;
 import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
 import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleType;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,7 +23,13 @@ public class MixinExplosion {
             original.call(level, vanillaExplosion, x, y, z, dx, dy, dz);
             return;
         }
-        ExplosionEffek.playExplosion(level, x, y, z, radius);
+        ExplosionEffek.Type type;
+        if (vanillaExplosion.getType() == ParticleTypes.EXPLOSION_EMITTER) {
+            type = ExplosionEffek.Type.BIG;
+        } else {
+            type = ExplosionEffek.Type.SMALL;
+        }
+        ExplosionEffek.playExplosion(type, level, x, y, z, radius);
     }
 
     @Shadow public float radius;

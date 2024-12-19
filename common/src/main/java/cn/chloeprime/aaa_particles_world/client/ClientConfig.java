@@ -16,7 +16,7 @@ public class ClientConfig {
 
         ENABLE_EXPLOSION = builder
                 .comment("Whether to replace explosion particles with Effekseer effect")
-                .define("enable_explosion", false);
+                .define("enable_explosion", true);
 
         SPEC = builder.build();
     }
