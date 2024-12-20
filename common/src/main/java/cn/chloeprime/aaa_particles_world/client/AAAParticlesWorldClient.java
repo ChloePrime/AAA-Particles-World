@@ -5,8 +5,8 @@ import net.minecraft.client.GraphicsStatus;
 import net.minecraft.client.Minecraft;
 
 public class AAAParticlesWorldClient {
-    public static boolean isEffeksDisabled() {
+    public static boolean isEffekEnabled() {
         boolean badOS = NativePlatform.isRunningOnUnsupportedPlatform();
-        return badOS || Minecraft.getInstance().options.graphicsMode().get() == GraphicsStatus.FABULOUS;
+        return !badOS && Minecraft.getInstance().options.graphicsMode().get() != GraphicsStatus.FABULOUS;
     }
 }

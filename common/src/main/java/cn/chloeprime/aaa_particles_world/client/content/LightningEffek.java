@@ -12,7 +12,7 @@ public class LightningEffek {
     public static final ResourceLocation LIGHTNING_EFFEK = AAAParticlesWorldMod.loc("lightning");
 
     public static boolean isEnabled() {
-        return ClientConfig.ENABLE_LIGHTNING.get() && !AAAParticlesWorldClient.isEffeksDisabled();
+        return ClientConfig.ENABLE_LIGHTNING.get() && AAAParticlesWorldClient.isEffekEnabled();
     }
 
     public static void playLightningEffek(Entity bolt) {
