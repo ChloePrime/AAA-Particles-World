@@ -2,7 +2,6 @@ package cn.chloeprime.aaa_particles_world.mixin.client;
 
 import cn.chloeprime.aaa_particles_world.client.content.ExplosionEffek;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.ExplodeParticle;
 import net.minecraft.client.particle.HugeExplosionParticle;
 import net.minecraft.client.particle.HugeExplosionSeedParticle;
 import net.minecraft.client.particle.Particle;
