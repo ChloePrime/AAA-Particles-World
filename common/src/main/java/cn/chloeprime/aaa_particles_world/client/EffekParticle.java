@@ -34,7 +34,7 @@ public class EffekParticle extends Particle {
 
     @Override
     public void render(VertexConsumer vertexConsumer, Camera camera, float partial) {
-        if (emitter != null) {
+        if (emitter != null && emitter.exists()) {
             var curX = (float)(Mth.lerp(partial, this.xo, this.x));
             var curY = (float)(Mth.lerp(partial, this.yo, this.y));
             var curZ = (float)(Mth.lerp(partial, this.zo, this.z));

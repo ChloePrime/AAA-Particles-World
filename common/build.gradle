@@ -10,10 +10,10 @@ dependencies {
 
     modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
 
-    /// AAA Particles 1.4.8
-    modImplementation 'curse.maven:aaa-particles-979809:5874444-sources-5984419'
+    /// AAA Particles 1.4.9
+    modImplementation 'curse.maven:aaa-particles-979809:6024389-sources-6024400'
 
     // Forge Config
     modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${rootProject.forge_config_api_version}"
-    compileOnly 'com.electronwill.night-config:toml:3.6.4'
+    compileOnly 'com.electronwill.night-config:toml:3.8.0'
 }

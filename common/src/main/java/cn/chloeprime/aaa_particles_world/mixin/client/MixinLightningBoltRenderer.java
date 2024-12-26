@@ -1,6 +1,5 @@
 package cn.chloeprime.aaa_particles_world.mixin.client;
 
-import cn.chloeprime.aaa_particles_world.client.AAAParticlesWorldClient;
 import cn.chloeprime.aaa_particles_world.client.content.LightningEffek;
 import cn.chloeprime.aaa_particles_world.common.internal.EffekLightningBolt;
 import com.mojang.blaze3d.vertex.PoseStack;

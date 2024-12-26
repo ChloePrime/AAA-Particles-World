@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[47,)"
+loaderVersion = "[2,)"
 #issueTrackerURL = ""
 license = "MIT"
 
@@ -8,34 +8,36 @@ modId = "aaa_particles_world"
 version = "${version}"
 displayName = "AAAParticles: World"
 authors = "ChloePrime"
-description = 'The lightning is back!'
+description = "The lightning is back!"
 logoFile = "assets/aaa_particles_world/icon.png"
 
 [[dependencies.aaa_particles_world]]
-modId = "forge"
-mandatory = true
-versionRange = "[47,)"
+modId = "neoforge"
+type = "required"
+versionRange = "[21,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.aaa_particles_world]]
 modId = "minecraft"
-mandatory = true
-versionRange = "[1.20.1,)"
+type = "required"
+versionRange = "[1.21,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.aaa_particles_world]]
 modId = "architectury"
-mandatory = true
-versionRange = "[9.2,)"
+type = "required"
+versionRange = "[13.0,)"
 ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.aaa_particles_world]]
 modId = "aaa_particles"
-mandatory = true
-versionRange = "[1.20.1-1,)"
+type = "required"
+versionRange = "[1.21,)"
 ordering = "AFTER"
 side = "BOTH"
 
+[[mixins]]
+config = "aaa_particles_world.mixins.json"
