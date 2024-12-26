@@ -2,9 +2,16 @@ plugins {
     id 'com.github.johnrengelman.shadow'
 }
 
+base {
+    // Set up a suffixed format for the mod jar names, e.g. `example-fabric`.
+    archivesName = "$rootProject.archives_name-neoforge"
+}
+
 architectury {
     platformSetupLoomIde()
-    neoForge()
+    neoForge() {
+        platformPackage = "forge"
+    }
 }
 
 configurations {
