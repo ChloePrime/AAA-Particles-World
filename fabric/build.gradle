@@ -35,7 +35,7 @@ dependencies {
     modImplementation 'curse.maven:aaa-particles-979809:6024389-sources-6024400'
 
     // Forge Config
-    modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${rootProject.forge_config_api_version}"
+    modApi include("fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${rootProject.forge_config_api_version}")
     compileOnly 'com.electronwill.night-config:toml:3.8.0'
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
