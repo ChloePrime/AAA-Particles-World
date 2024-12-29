@@ -97,9 +97,39 @@ public class LootBeamEffek {
             }
         }
 
+        var legacy = getLegacyFormatColor(line.getString());
+        if (legacy != null) {
+            return legacy;
+        }
+
         var style = line.getStyle();
         return style == Style.EMPTY
                 ? null
                 : Optional.ofNullable(style.getColor()).map(TextColor::getValue).orElse(null);
+    }
+
+    private static @Nullable Integer getLegacyFormatColor(String line) {
+        var isFormat = false;
+        for (int i = 0; i < line.length(); i++) {
+            var ch = line.charAt(i);
+            if (ch == '§') {
+                isFormat = true;
+                continue;
+            }
+            if (!isFormat && Character.isWhitespace(ch)) {
+                continue;
+            }
+            if (!isFormat) {
+                return null;
+            }
+            var code = Character.toLowerCase(ch);
+            Integer color = Optional.ofNullable(ChatFormatting.getByCode(code))
+                    .map(ChatFormatting::getColor)
+                    .orElse(null);
+            if (color != null) {
+                return color;
+            }
+        }
+        return null;
     }
 }
