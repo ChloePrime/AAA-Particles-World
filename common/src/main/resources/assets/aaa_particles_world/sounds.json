@@ -1,0 +1,9 @@
+{
+  "loot_drop": {
+    "sounds": [
+      "aaa_particles_world:loot_beam/drop_01",
+      "aaa_particles_world:loot_beam/drop_02",
+      "aaa_particles_world:loot_beam/drop_03"
+    ]
+  }
+}

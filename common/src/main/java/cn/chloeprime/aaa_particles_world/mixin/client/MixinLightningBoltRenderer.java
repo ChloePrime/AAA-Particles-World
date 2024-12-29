@@ -1,8 +1,7 @@
 package cn.chloeprime.aaa_particles_world.mixin.client;
 
-import cn.chloeprime.aaa_particles_world.client.AAAParticlesWorldClient;
 import cn.chloeprime.aaa_particles_world.client.content.LightningEffek;
-import cn.chloeprime.aaa_particles_world.common.internal.EffekLightningBolt;
+import cn.chloeprime.aaa_particles_world.common.internal.EffekTicketHolder;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.LightningBoltRenderer;
@@ -16,13 +15,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinLightningBoltRenderer {
     @Inject(
             method = "render(Lnet/minecraft/world/entity/LightningBolt;FFLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;I)V",
-            at = @At("HEAD"), cancellable = true
-    )
+            at = @At("HEAD"), cancellable = true)
     private void disableVanillaLightningModelAndPlayEffek(LightningBolt bolt, float f, float g, PoseStack poseStack, MultiBufferSource multiBufferSource, int i, CallbackInfo ci) {
         if (!LightningEffek.isEnabled()) {
             return;
         }
-        if (((EffekLightningBolt) bolt).aaaParticles$getEffekTicket()) {
+        if (((EffekTicketHolder) bolt).aaaParticles$getEffekTicket()) {
             LightningEffek.playLightningEffek(bolt);
         }
         ci.cancel();

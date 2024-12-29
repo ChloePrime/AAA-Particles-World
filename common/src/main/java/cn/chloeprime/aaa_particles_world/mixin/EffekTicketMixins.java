@@ -1,15 +1,16 @@
 package cn.chloeprime.aaa_particles_world.mixin;
 
-import cn.chloeprime.aaa_particles_world.common.internal.EffekLightningBolt;
+import cn.chloeprime.aaa_particles_world.common.internal.EffekTicketHolder;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LightningBolt;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.level.Level;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 
-@Mixin(LightningBolt.class)
-public abstract class MixinLightningBolt extends Entity implements EffekLightningBolt {
+@Mixin({LightningBolt.class, ItemEntity.class})
+public abstract class EffekTicketMixins extends Entity implements EffekTicketHolder {
     @Unique private boolean aaaParticles$effekTicket = true;
 
     @Unique
@@ -22,7 +23,7 @@ public abstract class MixinLightningBolt extends Entity implements EffekLightnin
         return false;
     }
 
-    public MixinLightningBolt(EntityType<?> entityType, Level level) {
+    public EffekTicketMixins(EntityType<?> entityType, Level level) {
         super(entityType, level);
     }
 }
