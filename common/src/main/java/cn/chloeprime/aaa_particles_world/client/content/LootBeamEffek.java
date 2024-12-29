@@ -10,12 +10,13 @@ import mod.chloeprime.aaaparticles.client.registry.EffectRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.ComponentContents;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
+import net.minecraft.network.chat.contents.PlainTextContents;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
@@ -73,7 +74,7 @@ public class LootBeamEffek {
     public static Optional<Color> getColor(ItemStack item) {
         var name = Optional.ofNullable(Minecraft.getInstance().player)
                 .stream()
-                .flatMap(player -> item.getTooltipLines(player, TooltipFlag.NORMAL).stream())
+                .flatMap(player -> item.getTooltipLines(Item.TooltipContext.of(player.level()), player, TooltipFlag.NORMAL).stream())
                 .findFirst();
 
         return name
@@ -83,14 +84,14 @@ public class LootBeamEffek {
     }
 
     private static @Nullable Integer getRealColor(Component line) {
-        if (ComponentContents.EMPTY.equals(line.getContents())) {
+        if (PlainTextContents.EMPTY.equals(line.getContents())) {
             var extra = line.getSiblings();
             if (extra.isEmpty()) {
                 return null;
             } else {
                 // 如果子段落没有样式（返回null），
                 // 那么使用父级的样式（让代码走下去）
-                var color = getRealColor(extra.get(0));
+                var color = getRealColor(extra.getFirst());
                 if (color != null) {
                     return color;
                 }
