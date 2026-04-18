@@ -3,10 +3,11 @@ package cn.chloeprime.aaa_particles_world.client.content;
 import cn.chloeprime.aaa_particles_world.AAAParticlesWorldMod;
 import cn.chloeprime.aaa_particles_world.client.AAAParticlesWorldClient;
 import cn.chloeprime.aaa_particles_world.client.ClientConfig;
+import mod.chloeprime.aaaparticles.api.client.EffectHolder;
+import mod.chloeprime.aaaparticles.api.client.EffectRegistry;
 import mod.chloeprime.aaaparticles.api.client.effekseer.ParticleEmitter;
 import mod.chloeprime.aaaparticles.api.common.AAALevel;
 import mod.chloeprime.aaaparticles.api.common.ParticleEmitterInfo;
-import mod.chloeprime.aaaparticles.client.registry.EffectRegistry;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
@@ -54,6 +55,7 @@ public class LootBeamEffek {
         AAALevel.addParticle(entity.level(), pei);
         if (FLOATS_WITH_ITEM) {
             Optional.ofNullable(EffectRegistry.get(effekId))
+                    .flatMap(EffectHolder::lazyGet)
                     .flatMap(effek -> effek.getNamedEmitter(ParticleEmitter.Type.WORLD, emitter))
                     .ifPresent(em1 -> em1.addPreDrawCallback((em, partial) -> {
                         if (entity.isRemoved() || !em.exists()) {
