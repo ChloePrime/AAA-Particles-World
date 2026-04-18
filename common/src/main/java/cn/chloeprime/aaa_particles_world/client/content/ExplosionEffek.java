@@ -3,7 +3,7 @@ package cn.chloeprime.aaa_particles_world.client.content;
 import cn.chloeprime.aaa_particles_world.AAAParticlesWorldMod;
 import cn.chloeprime.aaa_particles_world.client.AAAParticlesWorldClient;
 import cn.chloeprime.aaa_particles_world.client.ClientConfig;
-import cn.chloeprime.aaa_particles_world.client.EffekParticle;
+import mod.chloeprime.aaaparticles.api.client.util.VanillaParticleProxy;
 import mod.chloeprime.aaaparticles.api.common.AAALevel;
 import mod.chloeprime.aaaparticles.api.common.ParticleEmitterInfo;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -37,6 +37,7 @@ public class ExplosionEffek {
         AAALevel.addParticle(level, false, info);
     }
 
+    @SuppressWarnings("UnstableApiUsage")
     public static Particle createParticleWrapper(
             Type type, ClientLevel level,
             double x, double y, double z,
@@ -44,10 +45,8 @@ public class ExplosionEffek {
             float radius
     ) {
         var scale = radius / type.intrinsicRadius();
-        var particle = new EffekParticle(level, type.effekId(), x, y, z, dx, dy, dz);
-        if (particle.getEmitter().isPresent()) {
-            particle.getEmitter().get().setScale(scale, scale, scale);
-        }
+        var particle = new VanillaParticleProxy(type.effekId(), level, x, y, z, dx, dy, dz);
+        particle.getEmitter().thenAccept(emitter -> emitter.setScale(scale, scale, scale));
         return particle;
     }
 }
