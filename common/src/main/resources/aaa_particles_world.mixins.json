@@ -5,10 +5,12 @@
   "minVersion": "0.8",
   "refmap": "aaa_particles_world.refmap.json",
   "client": [
+    "client.MixinClientPacketListener",
     "client.MixinHugeExplosionParticleProvider",
     "client.MixinHugeExplosionSeedParticleProvider",
     "client.MixinItemEntity",
-    "client.MixinLightningBoltRenderer"
+    "client.MixinLightningBoltRenderer",
+    "client.MixinParticleEngine"
   ],
   "mixins": [
     "EffekTicketMixins",
