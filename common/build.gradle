@@ -1,19 +1,49 @@
-architectury {
-    common rootProject.enabled_platforms.split(',')
+plugins {
+    id 'multiloader-common'
+    id 'net.neoforged.moddev.legacyforge'
+}
+
+legacyForge {
+    mcpVersion = minecraft_version
+    if (file("src/main/resources/META-INF/accesstransformer.cfg").exists()) {
+        accessTransformers = ["src/main/resources/META-INF/accesstransformer.cfg"]
+    }
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
+    }
 }
 
 dependencies {
-    // We depend on Fabric Loader here to use the Fabric @Environment annotations,
-    // which get remapped to the correct annotations on each platform.
-    // Do NOT use other classes from Fabric Loader.
-    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+    compileOnly group: 'org.spongepowered', name: 'mixin', version: '0.8.5'
+    implementation group: 'com.google.code.findbugs', name: 'jsr305', version: '3.0.1'
 
-    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
+    compileOnly "org.ow2.asm:asm:9.7"
+    compileOnly "io.github.llamalad7:mixinextras-common:0.4.1"
 
-    /// AAA Particles 1.4.8
-    modImplementation 'curse.maven:aaa-particles-979809:5874444-sources-5984419'
+    // Architectury
+    modImplementation "dev.architectury:architectury-forge:$architectury_api_version"
+
+    /// AAA Particles
+    modImplementation "cn.chloeprime:aaa_particles-forge-$minecraft_version:$aaa_version"
 
     // Forge Config
-    modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${rootProject.forge_config_api_version}"
+    modApi "fuzs.forgeconfigapiport:forgeconfigapiport-common:${forge_config_api_version}"
     compileOnly 'com.electronwill.night-config:toml:3.6.4'
+}
+
+configurations {
+    commonJava {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+    commonResources {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+}
+
+artifacts {
+    commonJava sourceSets.main.java.sourceDirectories.singleFile
+    commonResources sourceSets.main.resources.sourceDirectories.singleFile
 }

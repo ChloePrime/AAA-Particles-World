@@ -1,27 +1,27 @@
-modLoader = "javafml"
-loaderVersion = "[47,)"
-#issueTrackerURL = ""
-license = "MIT"
-
-[[mods]]
-modId = "aaa_particles_world"
-version = "${version}"
-displayName = "AAAParticles: World"
-authors = "ChloePrime"
-description = 'The lightning is back!'
-logoFile = "assets/aaa_particles_world/icon.png"
-
-[[dependencies.aaa_particles_world]]
-modId = "forge"
-mandatory = true
-versionRange = "[47,)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.aaa_particles_world]]
+modLoader = "javafml" #mandatory
+loaderVersion = "${forge_loader_version_range}" #mandatory This is typically bumped every Minecraft version by Forge. See https://files.minecraftforge.net/ for a list of versions.
+license = "${license}" # Review your options at https://choosealicense.com/.
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
+[[mods]] #mandatory
+modId = "${mod_id}" #mandatory
+version = "${version}" #mandatory
+displayName = "${mod_name}" #mandatory
+#updateJSONURL="https://change.me.example.invalid/updates.json" #optional (see https://mcforge.readthedocs.io/en/latest/gettingstarted/autoupdate/)
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional (displayed in the mod UI)
+logoFile = "assets/${mod_id}/${mod_id}.png" #optional (needs to be in the root of your mod jar (root of your 'resources' folder))
+credits = "${credits}" #optional
+authors = "${mod_author}" #optional
+description = '''${description}''' #mandatory (Supports multiline text)
+[[dependencies.${mod_id}]] #optional
+modId = "forge" #mandatory
+mandatory = true #mandatory
+versionRange = "[${forge_version},)" #mandatory
+ordering = "NONE" # The order that this dependency should load in relation to your mod, required to be either 'BEFORE' or 'AFTER' if the dependency is not mandatory
+side = "BOTH" # Side this dependency is applied on - 'BOTH', 'CLIENT' or 'SERVER'
+[[dependencies.${mod_id}]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20.1,)"
+versionRange = "${minecraft_version_range}"
 ordering = "NONE"
 side = "BOTH"
 
@@ -35,7 +35,6 @@ side = "BOTH"
 [[dependencies.aaa_particles_world]]
 modId = "aaa_particles"
 mandatory = true
-versionRange = "[1.20.1-1,)"
+versionRange = "[2,)"
 ordering = "AFTER"
 side = "BOTH"
-
