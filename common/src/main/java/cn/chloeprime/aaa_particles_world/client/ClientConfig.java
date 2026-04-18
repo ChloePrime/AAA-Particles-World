@@ -5,6 +5,7 @@ import net.neoforged.neoforge.common.ModConfigSpec;
 
 public class ClientConfig {
     public static final ModConfigSpec SPEC;
+    public static final ModConfigSpec.BooleanValue ENABLE_CRIT;
     public static final ModConfigSpec.BooleanValue ENABLE_LIGHTNING;
     public static final ModConfigSpec.BooleanValue ENABLE_EXPLOSION;
     public static final ModConfigSpec.BooleanValue ENABLE_LOOT_BEAM;
@@ -12,6 +13,10 @@ public class ClientConfig {
 
     static {
         var builder = new ModConfigSpec.Builder();
+
+        ENABLE_CRIT = builder
+                .comment("Whether to replace critical particles with Effekseer effect")
+                .define("enable_crit", true);
 
         ENABLE_LIGHTNING = builder
                 .comment("Whether to replace lightining renderer with Effekseer effect")

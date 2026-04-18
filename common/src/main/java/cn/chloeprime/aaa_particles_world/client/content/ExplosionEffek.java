@@ -34,7 +34,7 @@ public class ExplosionEffek {
         var info = ParticleEmitterInfo.create(level, type.effekId())
                 .position(x, y, z)
                 .scale(radius / type.intrinsicRadius());
-        AAALevel.addParticle(level, false, info);
+        AAALevel.addParticle(level, true, info);
     }
 
     @SuppressWarnings("UnstableApiUsage")
