@@ -1,5 +1,6 @@
 package cn.chloeprime.aaa_particles_world.fabric.client;
 
+import cn.chloeprime.aaa_particles_world.client.AAAParticlesWorldClient;
 import cn.chloeprime.aaa_particles_world.client.ClientConfig;
 import fuzs.forgeconfigapiport.api.config.v2.ForgeConfigRegistry;
 import net.fabricmc.api.ClientModInitializer;
@@ -11,5 +12,6 @@ public final class AAAParticlesWorldModFabricClient implements ClientModInitiali
     @Override
     public void onInitializeClient() {
         ForgeConfigRegistry.INSTANCE.register(MOD_ID, ModConfig.Type.CLIENT, ClientConfig.SPEC);
+        AAAParticlesWorldClient.init();
     }
 }
