@@ -1,6 +1,7 @@
 package cn.chloeprime.aaa_particles_world.client;
 
 import cn.chloeprime.aaa_particles_world.client.content.AtmosphereEffekManager;
+import cn.chloeprime.aaa_particles_world.client.content.RocketTrailEffek;
 import mod.chloeprime.aaaparticles.client.installer.NativePlatform;
 import net.minecraft.client.GraphicsStatus;
 import net.minecraft.client.Minecraft;
@@ -26,5 +27,6 @@ public class AAAParticlesWorldClient {
 
     public static void init() {
         AtmosphereEffekManager.init();
+        RocketTrailEffek.init();
     }
 }
