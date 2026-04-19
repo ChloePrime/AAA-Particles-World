@@ -1,6 +1,7 @@
 package cn.chloeprime.aaa_particles_world.mixin.client;
 
 import cn.chloeprime.aaa_particles_world.client.content.CritEffek;
+import cn.chloeprime.aaa_particles_world.client.content.MagicCritEffek;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.multiplayer.ClientPacketListener;
 import net.minecraft.network.protocol.game.ClientboundAnimatePacket;
@@ -21,11 +22,17 @@ public class MixinClientPacketListener {
             return;
         }
         switch (packet.getId()) {
-            case 4, 5 -> {
+            case 4 -> {
                 if (!CritEffek.isEnabled()) {
                     return;
                 }
                 CritEffek.playCritEffek(entity);
+            }
+            case 5 -> {
+                if (!MagicCritEffek.isEnabled()) {
+                    return;
+                }
+                MagicCritEffek.playMagicCritEffek(entity);
             }
             default -> {
                 return;

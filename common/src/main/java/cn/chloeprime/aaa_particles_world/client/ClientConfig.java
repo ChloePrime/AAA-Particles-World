@@ -5,6 +5,7 @@ import net.minecraftforge.common.ForgeConfigSpec;
 public class ClientConfig {
     public static final ForgeConfigSpec SPEC;
     public static final ForgeConfigSpec.BooleanValue ENABLE_CRIT;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_MAGIC_CRIT;
     public static final ForgeConfigSpec.BooleanValue ENABLE_LIGHTNING;
     public static final ForgeConfigSpec.BooleanValue ENABLE_EXPLOSION;
     public static final ForgeConfigSpec.BooleanValue ENABLE_LOOT_BEAM;
@@ -16,6 +17,10 @@ public class ClientConfig {
         ENABLE_CRIT = builder
                 .comment("Whether to replace critical particles with Effekseer effect")
                 .define("enable_crit", true);
+
+        ENABLE_MAGIC_CRIT = builder
+                .comment("Whether to replace magical crit particles with Effekseer effect")
+                .define("enable_magical_crit", true);
 
         ENABLE_LIGHTNING = builder
                 .comment("Whether to replace lightining renderer with Effekseer effect")
