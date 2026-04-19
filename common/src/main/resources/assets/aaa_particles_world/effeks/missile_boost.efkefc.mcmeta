@@ -1,0 +1,6 @@
+{
+  "finalization": {
+    "trigger": 3,
+    "delay": 100
+  }
+}
