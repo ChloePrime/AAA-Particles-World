@@ -23,11 +23,18 @@ class MixinHugeExplosionParticleProvider {
             cancellable = true)
     private void replaceWithEffekParticle(SimpleParticleType simpleParticleType, ClientLevel level, double x, double y, double z, double dx, double dy, double dz, CallbackInfoReturnable<Particle> cir) {
         if (ExplosionEffek.isEnabled()) {
+            var isDragon = ExplosionEffek.checkNearbyDyingEnderDragon(level, x, y, z);
+            var type = isDragon
+                    ? ExplosionEffek.Type.DRAGON_SMALL
+                    : ExplosionEffek.Type.SMALL;
+            var size = isDragon
+                    ? ExplosionEffek.SMALL_DRAGON_EXPLOSION_SIZE
+                    : ExplosionEffek.SMALL_VANILLA_EXPLOSION_SIZE;
             var wrapped = ExplosionEffek.createParticleWrapper(
-                    ExplosionEffek.Type.SMALL, level,
+                    type, level,
                     x, y, z,
                     dx, dy, dz,
-                    ExplosionEffek.SMALL_VANILLA_EXPLOSION_SIZE);
+                    size);
             cir.setReturnValue(wrapped);
         }
     }
