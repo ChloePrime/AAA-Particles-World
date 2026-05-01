@@ -31,7 +31,7 @@
         "minecraft": "${minecraft_version}",
         "java": ">=17",
         "architectury": ">=9.2",
-        "aaa_particles": ">=2"
+        "aaa_particles": ">=2.1"
     },
     "suggests": {
     }
