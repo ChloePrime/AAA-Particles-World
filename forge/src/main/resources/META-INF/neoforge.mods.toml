@@ -1,43 +1,47 @@
-modLoader = "javafml"
-loaderVersion = "[2,)"
-#issueTrackerURL = ""
-license = "MIT"
-
-[[mods]]
-modId = "aaa_particles_world"
-version = "${version}"
-displayName = "AAAParticles: World"
-authors = "ChloePrime"
-description = "The lightning is back!"
-logoFile = "assets/aaa_particles_world/icon.png"
-
-[[dependencies.aaa_particles_world]]
-modId = "neoforge"
-type = "required"
-versionRange = "[21,)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.aaa_particles_world]]
-modId = "minecraft"
-type = "required"
-versionRange = "[1.21,)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.aaa_particles_world]]
-modId = "architectury"
-type = "required"
-versionRange = "[13.0,)"
-ordering = "AFTER"
-side = "BOTH"
-
-[[dependencies.aaa_particles_world]]
-modId = "aaa_particles"
-type = "required"
-versionRange = "[1.21,)"
-ordering = "AFTER"
-side = "BOTH"
-
+modLoader = "javafml" #mandatory
+loaderVersion = "${neoforge_loader_version_range}" #mandatory
+license = "${license}" # Review your options at https://choosealicense.com/.
+#issueTrackerURL="https://change.me.to.your.issue.tracker.example.invalid/" #optional
+[[mods]] #mandatory
+modId = "${mod_id}" #mandatory
+version = "${version}" #mandatory
+displayName = "${mod_name}" #mandatory
+#updateJSONURL="https://change.me.example.invalid/updates.json" #optional (see https://docs.neoforged.net/docs/misc/updatechecker/)
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional (displayed in the mod UI)
+logoFile = "assets/${mod_id}/${mod_id}.png" #optional
+credits="${credits}" #optional
+authors = "${mod_author}" #optional
+description = '''${description}''' #mandatory (Supports multiline text)
 [[mixins]]
-config = "aaa_particles_world.mixins.json"
+config = "${mod_id}.mixins.json"
+[[dependencies.${mod_id}]] #optional
+modId = "neoforge" #mandatory
+type="required" #mandatory (Can be one of "required", "optional", "incompatible" or "discouraged")
+versionRange = "[${neoforge_version},)" #mandatory
+ordering = "NONE" # The order that this dependency should load in relation to your mod, required to be either 'BEFORE' or 'AFTER' if the dependency is not mandatory
+side = "BOTH" # Side this dependency is applied on - 'BOTH', 'CLIENT' or 'SERVER'
+[[dependencies.${mod_id}]]
+modId = "minecraft"
+type="required" #mandatory (Can be one of "required", "optional", "incompatible" or "discouraged")
+versionRange = "${minecraft_version_range}"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.${mod_id}]]
+modId = "architectury"
+type="required"
+versionRange = "[13,)"
+ordering = "AFTER"
+side = "BOTH"
+[[dependencies.${mod_id}]]
+modId = "aaa_particles"
+type="required"
+versionRange = "[2.1,)"
+ordering = "AFTER"
+side = "BOTH"
+
+# Features are specific properties of the game environment, that you may want to declare you require. This example declares
+# that your mod requires GL version 3.2 or higher. Other features will be added. They are side aware so declaring this won't
+# stop your mod loading on the server for example.
+#[features.${mod_id}]
+#openGLVersion="[3.2,)"

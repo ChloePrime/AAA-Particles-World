@@ -1,36 +1,37 @@
 {
-  "schemaVersion": 1,
-  "id": "aaa_particles_world",
-  "version": "${version}",
-  "name": "AAAParticles: World",
-  "description": "The lightning is back!",
-  "authors": [
-    "ChloePrime"
-  ],
-  "contact": {
-    "homepage": ""
-  },
-  "license": "MIT",
-  "icon": "assets/aaa_particles_world/icon.png",
-  "environment": "*",
-  "entrypoints": {
-    "main": [
-      "cn.chloeprime.aaa_particles_world.fabric.AAAParticlesWorldModFabric"
+    "schemaVersion": 1,
+    "id": "${mod_id}",
+    "version": "${version}",
+    "name": "${mod_name}",
+    "description": "${description}",
+    "authors": [
+        "${mod_author}"
     ],
-    "client": [
-      "cn.chloeprime.aaa_particles_world.fabric.client.AAAParticlesWorldModFabricClient"
-    ]
-  },
-  "mixins": [
-    "aaa_particles_world.mixins.json"
-  ],
-  "depends": {
-    "fabricloader": ">=0.16",
-    "minecraft": "~1.21.1",
-    "java": ">=21",
-    "architectury": ">=13.0",
-    "fabric-api": "*"
-  },
-  "suggests": {
-  }
+    "contact": {
+        "homepage": "https://github.com/ChloePrime",
+        "sources": "https://github.com/ChloePrime/AAA-Particles-World"
+    },
+    "license": "${license}",
+    "icon": "assets/${mod_id}/${mod_id}.png",
+    "environment": "client",
+    "entrypoints": {
+        "main": [
+            "cn.chloeprime.aaa_particles_world.fabric.AAAParticlesWorldModFabric"
+        ],
+        "client": [
+            "cn.chloeprime.aaa_particles_world.fabric.client.AAAParticlesWorldModFabricClient"
+        ]
+    },
+    "mixins": [
+        "${mod_id}.mixins.json"
+    ],
+    "depends": {
+        "fabricloader": ">=${fabric_loader_version}",
+        "fabric-api": "*",
+        "minecraft": "${minecraft_version}",
+        "java": ">=${java_version}"
+    },
+    "suggests": {
+    }
 }
+  

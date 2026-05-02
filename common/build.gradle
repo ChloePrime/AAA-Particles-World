@@ -1,19 +1,62 @@
-architectury {
-    common rootProject.enabled_platforms.split(',')
+plugins {
+    id 'multiloader-common'
+    id 'net.neoforged.moddev'
+}
+
+neoForge {
+    neoFormVersion = neo_form_version
+    // Automatically enable AccessTransformers if the file exists
+    def at = file('src/main/resources/META-INF/accesstransformer.cfg')
+    if (at.exists()) {
+        accessTransformers.from(at.absolutePath)
+    }
+    parchment {
+        minecraftVersion = parchment_minecraft
+        mappingsVersion = parchment_version
+    }
 }
 
 dependencies {
-    // We depend on Fabric Loader here to use the Fabric @Environment annotations,
-    // which get remapped to the correct annotations on each platform.
-    // Do NOT use other classes from Fabric Loader.
-    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+    compileOnly group: 'org.spongepowered', name: 'mixin', version: '0.8.5'
+    // fabric and neoforge both bundle mixinextras, so it is safe to use it in common
+    compileOnly group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.3.5'
+    annotationProcessor group: 'io.github.llamalad7', name: 'mixinextras-common', version: '0.3.5'
 
-    modImplementation "dev.architectury:architectury:$rootProject.architectury_api_version"
+    ;// Common Dependencies Missing in Vanilla
+    {
+        compileOnly "org.ow2.asm:asm:9.7.1"
+        compileOnly "io.github.llamalad7:mixinextras-common:0.4.1"
+    }
 
-    /// AAA Particles 1.4.9
-    modImplementation 'curse.maven:aaa-particles-979809:6024389-sources-6024400'
+    ;// Dependencies
+    {
+        // Architectury
+        implementation "dev.architectury:architectury-neoforge:$architectury_api_version"
 
-    // Forge Config
-    modApi "fuzs.forgeconfigapiport:forgeconfigapiport-fabric:${rootProject.forge_config_api_version}"
-    compileOnly 'com.electronwill.night-config:toml:3.8.0'
+        /// AAA Particles
+        implementation "cn.chloeprime:aaa_particles-common-$minecraft_version:$aaa_version"
+    }
+
+    ;// JIJ Dependencies
+    {
+        // Forge Config API Port
+        compileOnly "fuzs.forgeconfigapiport:forgeconfigapiport-common-neoforgeapi:$forge_config_api_version"
+    }
 }
+
+configurations {
+    commonJava {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+    commonResources {
+        canBeResolved = false
+        canBeConsumed = true
+    }
+}
+
+artifacts {
+    commonJava sourceSets.main.java.sourceDirectories.singleFile
+    commonResources sourceSets.main.resources.sourceDirectories.singleFile
+}
+

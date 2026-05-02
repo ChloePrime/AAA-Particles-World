@@ -3,6 +3,7 @@
   "package": "cn.chloeprime.aaa_particles_world.mixin",
   "compatibilityLevel": "JAVA_21",
   "minVersion": "0.8",
+  "refmap": "aaa_particles_world.refmap.json",
   "client": [
     "client.MixinItemEntity",
     "client.MixinLightningBoltRenderer",
