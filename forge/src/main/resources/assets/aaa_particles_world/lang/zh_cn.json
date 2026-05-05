@@ -1,0 +1,8 @@
+{
+  "aaa_particles_world.configuration.enable_crit": "启用暴击特效替换",
+  "aaa_particles_world.configuration.enable_magical_crit": "启用魔法暴击特效替换",
+  "aaa_particles_world.configuration.enable_lightning": "启用闪电特效替换",
+  "aaa_particles_world.configuration.enable_explosion": "启用爆炸特效替换",
+  "aaa_particles_world.configuration.enable_loot_beam": "启用战利品光束",
+  "aaa_particles_world.configuration.enable_loot_sound": "启用战利品落地音效"
+}
