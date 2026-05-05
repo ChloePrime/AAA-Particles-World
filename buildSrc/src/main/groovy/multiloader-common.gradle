@@ -41,20 +41,8 @@ repositories {
         }
         filter { includeGroupAndSubgroups('org.spongepowered') }
     }
-    exclusiveContent {
-        forRepositories(
-                maven {
-                    name = 'ParchmentMC'
-                    url = 'https://maven.parchmentmc.org/'
-                },
-                maven {
-                    name = "NeoForge"
-                    url = 'https://maven.neoforged.net/releases'
-                }
-        )
-        filter { includeGroup('org.parchmentmc.data') }
-    }
 
+    // CurseForge and Modrinth
     exclusiveContent {
         forRepository {
             maven {
@@ -78,13 +66,18 @@ repositories {
         }
     }
 
+    // Dependencies' Maven
     exclusiveContent {
-        forRepository {
-            maven {
-                name "Architectury Mavenn"
-                url "https://maven.architectury.dev/"
-            }
-        }
+        forRepositories(
+                maven {
+                    name "Architectury Mavenn"
+                    url "https://maven.architectury.dev/"
+                },
+                // Architectury for 26.1 exists but is not released officially.
+                flatDir {
+                    dir '../libs'
+                }
+        )
         filter { includeGroupAndSubgroups('dev.architectury') }
     }
     exclusiveContent {
@@ -110,6 +103,7 @@ repositories {
             includeGroupAndSubgroups("cn.chloeprime")
         }
     }
+
     maven {
         name = 'BlameJared'
         url = 'https://maven.blamejared.com'
@@ -121,30 +115,15 @@ dependencies {
     annotationProcessor 'com.google.auto.service:auto-service:1.1.1'
 }
 
-// Declare capabilities on the outgoing configurations.
-// Read more about capabilities here: https://docs.gradle.org/current/userguide/component_capabilities.html#sec:declaring-additional-capabilities-for-a-local-component
-['apiElements', 'runtimeElements', 'sourcesElements', 'javadocElements'].each { variant ->
-    configurations."$variant".outgoing {
-        capability("$group:${base.archivesName.get()}:$version")
-        capability("$group:$mod_id-${project_name}-${minecraft_version}:$version")
-        capability("$group:$mod_id:$version")
-    }
-    publishing.publications.configureEach {
-        suppressPomMetadataWarningsFor(variant)
-    }
-}
-
-def SAFE_MOD_NAME = mod_name.replace(' ', '_').replace(':', '')
-
 sourcesJar {
     from(rootProject.file('LICENSE')) {
-        rename { "${it}_${SAFE_MOD_NAME}" }
+        rename { "${it}_${mod_name}" }
     }
 }
 
 jar {
     from(rootProject.file('LICENSE')) {
-        rename { "${it}_${SAFE_MOD_NAME}" }
+        rename { "${it}_${mod_name}" }
     }
 
     manifest {
@@ -175,15 +154,22 @@ processResources {
             'description'                  : project.description,
             'neoforge_version'             : neoforge_version,
             'neoforge_loader_version_range': neoforge_loader_version_range,
-            "forge_version": forge_version,
-            "forge_loader_version_range": forge_loader_version_range,
             'credits'                      : credits,
             'java_version'                 : java_version
     ]
 
-    filesMatching(['pack.mcmeta', 'fabric.mod.json', 'META-INF/mods.toml', 'META-INF/neoforge.mods.toml', '*.mixins.json']) {
+    var jsonExpandProps = expandProps.collectEntries {
+        key, value -> [(key): value instanceof String ? value.replace("\n", "\\\\n") : value]
+    }
+
+    filesMatching(['META-INF/mods.toml', 'META-INF/neoforge.mods.toml']) {
         expand expandProps
     }
+
+    filesMatching(['fabric.mod.json', '*.mixins.json']) {
+        expand jsonExpandProps
+    }
+
     inputs.properties(expandProps)
 }
 
@@ -195,15 +181,8 @@ publishing {
         }
     }
     repositories {
-        if (project.hasProperty("CHLOE_MAVEN_USERNAME")) {
-            maven {
-                name = "Chloe_Maven"
-                url = "https://maven.chloeprime.cn:4080/releases/"
-                credentials {
-                    username "$CHLOE_MAVEN_USERNAME"
-                    password "$CHLOE_MAVEN_PASSWORD"
-                }
-            }
+        maven {
+            url System.getenv('local_maven_url')
         }
     }
 }

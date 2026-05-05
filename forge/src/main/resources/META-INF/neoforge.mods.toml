@@ -28,12 +28,6 @@ ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.${mod_id}]]
-modId = "architectury"
-type="required"
-versionRange = "[13,)"
-ordering = "AFTER"
-side = "BOTH"
-[[dependencies.${mod_id}]]
 modId = "aaa_particles"
 type="required"
 versionRange = "[2.1,)"
