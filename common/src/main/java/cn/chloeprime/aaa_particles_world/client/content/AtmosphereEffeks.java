@@ -20,7 +20,7 @@ public final class AtmosphereEffeks {
         }
 
         public boolean isInNight(Entity entity) {
-            var dayTime = entity.level().dayTime() % 24000L;
+            var dayTime = entity.level().getDefaultClockTime() % 24000L;
             return dayTime >= TIME_NIGHT_BEGIN && dayTime < TIME_NIGHT_END;
         }
 

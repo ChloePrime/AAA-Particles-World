@@ -5,11 +5,11 @@ import cn.chloeprime.aaa_particles_world.client.AAAParticlesWorldClient;
 import cn.chloeprime.aaa_particles_world.client.ClientConfig;
 import mod.chloeprime.aaaparticles.api.common.AAALevel;
 import mod.chloeprime.aaaparticles.api.common.ParticleEmitterInfo;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
 
 public class MagicCritEffek {
-    public static final ResourceLocation MAGIC_CRIT_EFFEK = AAAParticlesWorldMod.loc("explosion_mini/blue");
+    public static final Identifier MAGIC_CRIT_EFFEK = AAAParticlesWorldMod.loc("explosion_mini/blue");
     public static final float INTRINSIC_SCALE = 5;
     public static final float TARGET_SIZE = 1.5F;
 

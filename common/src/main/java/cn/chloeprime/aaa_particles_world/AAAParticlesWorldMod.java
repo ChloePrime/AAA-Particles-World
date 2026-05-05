@@ -1,7 +1,7 @@
 package cn.chloeprime.aaa_particles_world;
 
 import cn.chloeprime.aaa_particles_world.common.ModSounds;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public final class AAAParticlesWorldMod {
     public static final String MOD_ID = "aaa_particles_world";
@@ -10,7 +10,7 @@ public final class AAAParticlesWorldMod {
         ModSounds.init();
     }
 
-    public static ResourceLocation loc(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MOD_ID, path);
+    public static Identifier loc(String path) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, path);
     }
 }

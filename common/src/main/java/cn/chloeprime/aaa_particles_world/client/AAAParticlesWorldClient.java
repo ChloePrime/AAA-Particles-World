@@ -3,9 +3,8 @@ package cn.chloeprime.aaa_particles_world.client;
 import cn.chloeprime.aaa_particles_world.client.content.AtmosphereEffekManager;
 import cn.chloeprime.aaa_particles_world.client.content.RocketTrailEffek;
 import mod.chloeprime.aaaparticles.client.installer.NativePlatform;
-import net.minecraft.client.GraphicsStatus;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.ParticleStatus;
+import net.minecraft.server.level.ParticleStatus;
 
 public class AAAParticlesWorldClient {
     public static boolean isEffekReduced() {
@@ -18,10 +17,10 @@ public class AAAParticlesWorldClient {
             return false;
         }
         boolean badOS = NativePlatform.isRunningOnUnsupportedPlatform();
-        return !badOS && Minecraft.getInstance().options.graphicsMode().get() != GraphicsStatus.FABULOUS;
+        return !badOS;
     }
 
-    private static ParticleStatus particleOption() {
+    private static net.minecraft.server.level.ParticleStatus particleOption() {
         return Minecraft.getInstance().options.particles().get();
     }
 

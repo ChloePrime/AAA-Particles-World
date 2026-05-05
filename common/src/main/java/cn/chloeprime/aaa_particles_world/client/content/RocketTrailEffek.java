@@ -5,16 +5,16 @@ import cn.chloeprime.aaa_particles_world.client.AAAParticlesWorldClient;
 import cn.chloeprime.aaa_particles_world.client.ClientPlatformMethods;
 import mod.chloeprime.aaaparticles.api.common.AAALevel;
 import mod.chloeprime.aaaparticles.api.common.ParticleEmitterInfo;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.projectile.Fireball;
+import net.minecraft.world.entity.projectile.hurtingprojectile.Fireball;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.ArrayDeque;
 import java.util.Queue;
 
 public final class RocketTrailEffek {
-    public static final ResourceLocation ID = AAAParticlesWorldMod.loc("missile_boost");
+    public static final Identifier ID = AAAParticlesWorldMod.loc("missile_boost");
     public static final float SCALE = 0.3F;
 
     public static boolean isEnabled() {

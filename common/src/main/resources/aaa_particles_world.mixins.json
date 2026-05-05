@@ -10,7 +10,9 @@
     "client.MixinHugeExplosionSeedParticleProvider",
     "client.MixinItemEntity",
     "client.MixinLightningBoltRenderer",
-    "client.MixinParticleEngine"
+    "client.MixinParticleEngine",
+    "client.mc26_1.ItemStackRenderStateAccessor",
+    "client.mc26_1.ItemStackRenderStateLayerRenderStateAccessor"
   ],
   "mixins": [
     "EffekTicketMixins",

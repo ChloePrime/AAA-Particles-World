@@ -6,16 +6,16 @@ import mod.chloeprime.aaaparticles.api.client.EffectHolder;
 import mod.chloeprime.aaaparticles.api.client.EffectRegistry;
 import mod.chloeprime.aaaparticles.api.client.effekseer.ParticleEmitter;
 import net.minecraft.client.Minecraft;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
 
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 
 public abstract class AtmosphereEffek {
-    private final ResourceLocation effekId;
+    private final Identifier effekId;
 
-    protected AtmosphereEffek(ResourceLocation effekId) {
+    protected AtmosphereEffek(Identifier effekId) {
         this.effekId = effekId;
     }
 
@@ -23,7 +23,7 @@ public abstract class AtmosphereEffek {
         return AAAParticlesWorldClient.isEffekEnabled();
     }
 
-    public ResourceLocation getEffekId(Minecraft mc) {
+    public Identifier getEffekId(Minecraft mc) {
         return this.effekId;
     }
 

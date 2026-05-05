@@ -20,7 +20,7 @@ public abstract class MixinItemEntity extends Entity {
             method = "tick",
             at = @At("HEAD"))
     private void getTicketAndPlayEffek(CallbackInfo ci) {
-        if (!level().isClientSide || !LootBeamEffek.isEnabled()) {
+        if (!level().isClientSide() || !LootBeamEffek.isEnabled()) {
             return;
         }
         var self = (ItemEntity) (Object) this;
@@ -33,7 +33,7 @@ public abstract class MixinItemEntity extends Entity {
             method = "tick",
             at = @At("HEAD"))
     private void tryPlaySound(CallbackInfo ci) {
-        if (!level().isClientSide || !LootDropSound.isEnabled()) {
+        if (!level().isClientSide() || !LootDropSound.isEnabled()) {
             return;
         }
         var self = (ItemEntity) (Object) this;

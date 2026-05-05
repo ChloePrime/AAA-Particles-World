@@ -3,6 +3,7 @@ package cn.chloeprime.aaa_particles_world.client.content;
 import cn.chloeprime.aaa_particles_world.AAAParticlesWorldMod;
 import cn.chloeprime.aaa_particles_world.client.AAAParticlesWorldClient;
 import cn.chloeprime.aaa_particles_world.client.ClientConfig;
+import cn.chloeprime.aaa_particles_world.client.mc26_1.ItemRenderHelper26_1;
 import mod.chloeprime.aaaparticles.api.client.EffectHolder;
 import mod.chloeprime.aaaparticles.api.client.EffectRegistry;
 import mod.chloeprime.aaaparticles.api.client.effekseer.ParticleEmitter;
@@ -14,11 +15,10 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
 import net.minecraft.network.chat.contents.PlainTextContents;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import org.jetbrains.annotations.Nullable;
@@ -28,7 +28,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class LootBeamEffek {
-    public static final ResourceLocation EFFEK_ID = AAAParticlesWorldMod.loc("loot_beam");
+    public static final Identifier EFFEK_ID = AAAParticlesWorldMod.loc("loot_beam");
     public static final boolean FLOATS_WITH_ITEM = false;
 
     public static boolean isEnabled() {
@@ -41,8 +41,7 @@ public class LootBeamEffek {
         if (color == null) {
             return;
         }
-        var itemModel = Minecraft.getInstance().getItemRenderer().getModel(item, entity.level(), null, entity.getId());
-        var heightScale = itemModel.getTransforms().getTransform(ItemDisplayContext.GROUND).scale.y();
+        var heightScale = ItemRenderHelper26_1.getItemScale(item, entity.level(), entity).y();
 
         var effekId = EFFEK_ID;
         var emitter = AAAParticlesWorldMod.loc(String.valueOf(entity.getId()));

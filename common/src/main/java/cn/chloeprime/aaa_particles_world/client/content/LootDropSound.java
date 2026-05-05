@@ -18,7 +18,7 @@ public class LootDropSound {
 
     @SuppressWarnings("ConstantValue")
     public static void tryPlay(ItemEntity item, BooleanField hasPlayed) {
-        if (item.level() == null || !item.level().isClientSide) {
+        if (item.level() == null || !item.level().isClientSide()) {
             return;
         }
 

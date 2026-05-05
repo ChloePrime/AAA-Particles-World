@@ -8,7 +8,7 @@ import mod.chloeprime.aaaparticles.api.common.AAALevel;
 import mod.chloeprime.aaaparticles.api.common.ParticleEmitterInfo;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ExplosionEffek {
     public record Type(
-            ResourceLocation effekId,
+            Identifier effekId,
             float intrinsicRadius
     ) {
         public static final Type BIG = new Type(BIG_EXPLOSION_EFFEK, 3.5F);
@@ -33,9 +33,9 @@ public class ExplosionEffek {
     public static final float SMALL_VANILLA_EXPLOSION_SIZE = 1;
     public static final float SMALL_DRAGON_EXPLOSION_SIZE = 2.5F;
 
-    public static final ResourceLocation BIG_EXPLOSION_EFFEK = AAAParticlesWorldMod.loc("explosion");
-    public static final ResourceLocation SMALL_EXPLOSION_EFFEK = AAAParticlesWorldMod.loc("explosion_mini/yellow");
-    public static final ResourceLocation SMALL_EXPLOSION_EFFEK_BLUE = AAAParticlesWorldMod.loc("explosion_mini/blue");
+    public static final Identifier BIG_EXPLOSION_EFFEK = AAAParticlesWorldMod.loc("explosion");
+    public static final Identifier SMALL_EXPLOSION_EFFEK = AAAParticlesWorldMod.loc("explosion_mini/yellow");
+    public static final Identifier SMALL_EXPLOSION_EFFEK_BLUE = AAAParticlesWorldMod.loc("explosion_mini/blue");
 
     public static boolean isEnabled() {
         return ClientConfig.ENABLE_EXPLOSION.get() && AAAParticlesWorldClient.isEffekEnabled();
