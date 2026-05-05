@@ -1,6 +1,7 @@
 package cn.chloeprime.aaa_particles_world.client.content;
 
 import cn.chloeprime.aaa_particles_world.AAAParticlesWorldMod;
+import cn.chloeprime.aaa_particles_world.client.ClientConfig;
 import cn.chloeprime.aaa_particles_world.common.PlatformMethods;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.Entity;
@@ -12,6 +13,9 @@ public final class AtmosphereEffeks {
 
         @Override
         public boolean isEnabled(Minecraft mc) {
+            if (!ClientConfig.ENABLE_FIREFLIES.get()) {
+                return false;
+            }
             var player = mc.player;
             if (player == null) {
                 return false;

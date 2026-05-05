@@ -4,5 +4,7 @@
   "aaa_particles_world.configuration.enable_lightning": "Enable Lightning VFX Replacement",
   "aaa_particles_world.configuration.enable_explosion": "Enable Explosion VFX Replacement",
   "aaa_particles_world.configuration.enable_loot_beam": "Enable Loot Beam VFX",
-  "aaa_particles_world.configuration.enable_loot_sound": "Enable Item Drop Sound"
+  "aaa_particles_world.configuration.enable_loot_sound": "Enable Item Drop Sound",
+  "aaa_particles_world.configuration.enable_fireball_trail": "Enable Fireball Trail VFX",
+  "aaa_particles_world.configuration.enable_fireflies": "Enable Fireflies VFX"
 }
