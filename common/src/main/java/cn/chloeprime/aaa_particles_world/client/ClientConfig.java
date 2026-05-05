@@ -10,6 +10,8 @@ public class ClientConfig {
     public static final ForgeConfigSpec.BooleanValue ENABLE_EXPLOSION;
     public static final ForgeConfigSpec.BooleanValue ENABLE_LOOT_BEAM;
     public static final ForgeConfigSpec.BooleanValue ENABLE_LOOT_SOUND;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_FIREBALL_TRAIL;
+    public static final ForgeConfigSpec.BooleanValue ENABLE_FIREFLIES;
 
     static {
         var builder = new ForgeConfigSpec.Builder();
@@ -40,6 +42,13 @@ public class ClientConfig {
                         Requires "enable_loot_beam" enabled""")
                 .define("enable_loot_sound", true);
 
+        ENABLE_FIREBALL_TRAIL = builder
+                .comment("Whether to add a trail effek for (red) fireballs")
+                .define("enable_fireball_trail", true);
+
+        ENABLE_FIREFLIES = builder
+                .comment("Whether to add visual-only fireflies in swamp biomes at night")
+                .define("enable_fireflies", true);
 
         SPEC = builder.build();
     }

@@ -2,6 +2,7 @@ package cn.chloeprime.aaa_particles_world.client.content;
 
 import cn.chloeprime.aaa_particles_world.AAAParticlesWorldMod;
 import cn.chloeprime.aaa_particles_world.client.AAAParticlesWorldClient;
+import cn.chloeprime.aaa_particles_world.client.ClientConfig;
 import cn.chloeprime.aaa_particles_world.client.ClientPlatformMethods;
 import mod.chloeprime.aaaparticles.api.common.AAALevel;
 import mod.chloeprime.aaaparticles.api.common.ParticleEmitterInfo;
@@ -18,6 +19,9 @@ public final class RocketTrailEffek {
     public static final float SCALE = 0.3F;
 
     public static boolean isEnabled() {
+        if (!ClientConfig.ENABLE_FIREBALL_TRAIL.get()) {
+            return false;
+        }
         return !AAAParticlesWorldClient.isEffekReduced() && AAAParticlesWorldClient.isEffekEnabled();
     }
 
