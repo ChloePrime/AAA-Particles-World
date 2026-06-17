@@ -38,7 +38,15 @@ public class ExplosionEffek {
     public static final ResourceLocation SMALL_EXPLOSION_EFFEK_BLUE = AAAParticlesWorldMod.loc("explosion_mini/blue");
 
     public static boolean isEnabled() {
-        return ClientConfig.ENABLE_EXPLOSION.get() && AAAParticlesWorldClient.isEffekEnabled();
+        return (ClientConfig.ENABLE_SMALL_EXPLOSION.get() || ClientConfig.ENABLE_BIG_EXPLOSION.get()) && AAAParticlesWorldClient.isEffekEnabled();
+    }
+
+    public static boolean isReplacingSmallExplosion() {
+        return ClientConfig.ENABLE_SMALL_EXPLOSION.get() && AAAParticlesWorldClient.isEffekEnabled();
+    }
+
+    public static boolean isReplacingBigExplosion() {
+        return ClientConfig.ENABLE_BIG_EXPLOSION.get() && AAAParticlesWorldClient.isEffekEnabled();
     }
 
     public static void playExplosion(Type type, Level level, double x, double y, double z, float radius) {
