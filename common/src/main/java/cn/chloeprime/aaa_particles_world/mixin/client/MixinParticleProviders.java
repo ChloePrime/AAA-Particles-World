@@ -23,7 +23,7 @@ class MixinHugeExplosionParticleProvider {
             at = @At("HEAD"),
             cancellable = true)
     private void replaceWithEffekParticle(SimpleParticleType simpleParticleType, ClientLevel level, double x, double y, double z, double dx, double dy, double dz, RandomSource random, CallbackInfoReturnable<Particle> cir) {
-        if (ExplosionEffek.isEnabled()) {
+        if (ExplosionEffek.isReplacingSmallExplosion()) {
             var isDragon = ExplosionEffek.checkNearbyDyingEnderDragon(level, x, y, z);
             var type = isDragon
                     ? ExplosionEffek.Type.DRAGON_SMALL
@@ -48,7 +48,7 @@ class MixinHugeExplosionSeedParticleProvider {
             at = @At("HEAD"),
             cancellable = true)
     private void replaceWithEffekParticle(SimpleParticleType simpleParticleType, ClientLevel level, double x, double y, double z, double dx, double dy, double dz, RandomSource random, CallbackInfoReturnable<Particle> cir) {
-        if (ExplosionEffek.isEnabled()) {
+        if (ExplosionEffek.isReplacingBigExplosion()) {
             var wrapped = ExplosionEffek.createParticleWrapper(
                     ExplosionEffek.Type.BIG, level,
                     x, y, z,

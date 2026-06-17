@@ -17,16 +17,26 @@ public class MixinExplosion {
             method = "handleExplosion",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/multiplayer/ClientLevel;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
     private void betterExplodeParticles(
-            ClientLevel level, ParticleOptions particle, double x, double y, double z, double dx, double dy, double dz, Operation<Void> original,
-            ClientboundExplodePacket packet) {
+            ClientLevel level, ParticleOptions vanillaExplosion, double x, double y, double z, double dx, double dy, double dz, Operation<Void> original,
+            ClientboundExplodePacket packet
+    ) {
+        var vanilla = (Runnable) () -> original.call(level, vanillaExplosion, x, y, z, dx, dy, dz);
         if (!ExplosionEffek.isEnabled()) {
-            original.call(level, particle, x, y, z, dx, dy, dz);
+            vanilla.run();
             return;
         }
         ExplosionEffek.Type type;
-        if (particle == ParticleTypes.EXPLOSION_EMITTER) {
+        if (vanillaExplosion.getType() == ParticleTypes.EXPLOSION_EMITTER) {
+            if (!ExplosionEffek.isReplacingBigExplosion()) {
+                vanilla.run();
+                return;
+            }
             type = ExplosionEffek.Type.BIG;
         } else {
+            if (!ExplosionEffek.isReplacingSmallExplosion()) {
+                vanilla.run();
+                return;
+            }
             type = ExplosionEffek.Type.SMALL;
         }
         ExplosionEffek.playExplosion(type, level, x, y, z, packet.radius());

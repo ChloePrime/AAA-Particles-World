@@ -8,7 +8,8 @@ public class ClientConfig {
     public static final ModConfigSpec.BooleanValue ENABLE_CRIT;
     public static final ModConfigSpec.BooleanValue ENABLE_MAGIC_CRIT;
     public static final ModConfigSpec.BooleanValue ENABLE_LIGHTNING;
-    public static final ModConfigSpec.BooleanValue ENABLE_EXPLOSION;
+    public static final ModConfigSpec.BooleanValue ENABLE_SMALL_EXPLOSION;
+    public static final ModConfigSpec.BooleanValue ENABLE_BIG_EXPLOSION;
     public static final ModConfigSpec.BooleanValue ENABLE_LOOT_BEAM;
     public static final ModConfigSpec.BooleanValue ENABLE_LOOT_SOUND;
     public static final ModConfigSpec.BooleanValue ENABLE_FIREBALL_TRAIL;
@@ -29,9 +30,16 @@ public class ClientConfig {
                 .comment("Whether to replace lightining renderer with Effekseer effect")
                 .define("enable_lightning", true);
 
-        ENABLE_EXPLOSION = builder
-                .comment("Whether to replace explosion particles with Effekseer effect")
-                .define("enable_explosion", true);
+        ENABLE_SMALL_EXPLOSION = builder
+                .comment("Whether to replace small explosion particles with Effekseer effect")
+                .define("enable_small_explosion", true);
+
+        ENABLE_BIG_EXPLOSION = builder
+                .comment("""
+                        Whether to replace big explosion particles with Effekseer effect.
+                        If false, big explosion will be a composite of multiple small explosions.
+                        To let vanilla explode partile show, you should turn off `enable_small_explosion` too.""")
+                .define("enable_big_explosion", false);
 
         ENABLE_LOOT_BEAM = builder
                 .comment("Whether to play a beam on item entities")
