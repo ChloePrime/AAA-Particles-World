@@ -38,7 +38,7 @@ public class ClientConfig {
                         Whether to replace big explosion particles with Effekseer effect.
                         If false, big explosion will be a composite of multiple small explosions.
                         To let vanilla explode partile show, you should turn off `enable_small_explosion` too.""")
-                .define("enable_big_explosion", false);
+                .define("enable_big_explosion", true);
 
         ENABLE_LOOT_BEAM = builder
                 .comment("Whether to play a beam on item entities")
