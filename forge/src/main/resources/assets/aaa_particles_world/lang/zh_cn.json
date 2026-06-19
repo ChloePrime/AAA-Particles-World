@@ -7,5 +7,8 @@
   "aaa_particles_world.configuration.enable_loot_beam": "启用战利品光束",
   "aaa_particles_world.configuration.enable_loot_sound": "启用战利品落地音效",
   "aaa_particles_world.configuration.enable_fireball_trail": "启用火球尾焰特效",
-  "aaa_particles_world.configuration.enable_fireflies": "启用萤火虫特效"
+  "aaa_particles_world.configuration.enable_fireflies": "启用萤火虫特效",
+  "aaa_particles_world.configuration.poofs": "爆炸白烟设置",
+  "aaa_particles_world.configuration.remove_poof_for_small_explosion": "移除小型爆炸所产生的白烟粒子",
+  "aaa_particles_world.configuration.remove_poof_for_big_explosion": "移除大型爆炸所产生的白烟粒子"
 }

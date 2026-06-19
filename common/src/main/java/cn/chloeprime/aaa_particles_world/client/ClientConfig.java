@@ -15,6 +15,10 @@ public class ClientConfig {
     public static final ModConfigSpec.BooleanValue ENABLE_FIREBALL_TRAIL;
     public static final ModConfigSpec.BooleanValue ENABLE_FIREFLIES;
 
+    // MC26.1 stuff
+    public static final ModConfigSpec.BooleanValue MC26_1_REMOVE_POOF_FOR_SMALL_EXPLOSION;
+    public static final ModConfigSpec.BooleanValue MC26_1_REMOVE_POOF_FOR_LARGE_EXPLOSION;
+
     static {
         var builder = new ModConfigSpec.Builder();
 
@@ -58,6 +62,22 @@ public class ClientConfig {
         ENABLE_FIREFLIES = builder
                 .comment("Whether to add visual-only fireflies in swamp biomes at night")
                 .define("enable_fireflies", true);
+
+        builder.push("poofs");
+        {
+            MC26_1_REMOVE_POOF_FOR_SMALL_EXPLOSION = builder
+                    .comment("""
+                            [Since Minecraft 26.1.2]
+                            Whether to remove white smoke for small explosions. Requires enable_small_explosion set to true.""")
+                    .define("remove_poof_for_small_explosion", true);
+
+            MC26_1_REMOVE_POOF_FOR_LARGE_EXPLOSION = builder
+                    .comment("""
+                            [Since Minecraft 26.1.2]
+                            Whether to remove white smoke for large explosions. Requires enable_big_explosion set to true.""")
+                    .define("remove_poof_for_big_explosion", true);
+        }
+        builder.pop();
 
         SPEC = builder.build();
     }

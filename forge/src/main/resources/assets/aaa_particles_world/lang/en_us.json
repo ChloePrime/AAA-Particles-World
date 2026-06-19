@@ -7,5 +7,8 @@
   "aaa_particles_world.configuration.enable_loot_beam": "Enable Loot Beam VFX",
   "aaa_particles_world.configuration.enable_loot_sound": "Enable Item Drop Sound",
   "aaa_particles_world.configuration.enable_fireball_trail": "Enable Fireball Trail VFX",
-  "aaa_particles_world.configuration.enable_fireflies": "Enable Fireflies VFX"
+  "aaa_particles_world.configuration.enable_fireflies": "Enable Fireflies VFX",
+  "aaa_particles_world.configuration.poofs": "Poofs",
+  "aaa_particles_world.configuration.remove_poof_for_small_explosion": "Remove Poof For Small Explosion",
+  "aaa_particles_world.configuration.remove_poof_for_big_explosion": "Remove Poof For Large Explosion"
 }

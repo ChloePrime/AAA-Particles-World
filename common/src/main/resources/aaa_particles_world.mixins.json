@@ -12,7 +12,8 @@
     "client.MixinLightningBoltRenderer",
     "client.MixinParticleEngine",
     "client.mc26_1.ItemStackRenderStateAccessor",
-    "client.mc26_1.ItemStackRenderStateLayerRenderStateAccessor"
+    "client.mc26_1.ItemStackRenderStateLayerRenderStateAccessor",
+    "client.mc26_1.MixinClientPacketListener26_1"
   ],
   "mixins": [
     "EffekTicketMixins",
