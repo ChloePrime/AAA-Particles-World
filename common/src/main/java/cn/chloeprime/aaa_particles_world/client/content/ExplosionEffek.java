@@ -24,9 +24,9 @@ public class ExplosionEffek {
             ResourceLocation effekId,
             float intrinsicRadius
     ) {
-        public static final Type BIG = new Type(BIG_EXPLOSION_EFFEK, 3.5F);
-        public static final Type SMALL = new Type(SMALL_EXPLOSION_EFFEK, 5);
-        public static final Type DRAGON_SMALL = new Type(SMALL_EXPLOSION_EFFEK_BLUE, 5);
+        public static final Type BIG = new Type(BIG_EXPLOSION_EFFEK, 8);
+        public static final Type SMALL = new Type(SMALL_EXPLOSION_EFFEK, 4);
+        public static final Type DRAGON_SMALL = new Type(SMALL_EXPLOSION_EFFEK_BLUE, 4);
     }
 
     public static final float LARGE_VANILLA_EXPLOSION_SIZE = 5;
