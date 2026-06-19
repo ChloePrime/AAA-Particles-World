@@ -14,8 +14,7 @@
   ],
   "mixins": [
     "EffekTicketMixins",
-    "MixinAbstractHurtingProjectile",
-    "MixinExplosion"
+    "MixinAbstractHurtingProjectile"
   ],
   "injectors": {
     "defaultRequire": 1
