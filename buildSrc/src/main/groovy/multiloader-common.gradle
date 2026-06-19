@@ -69,16 +69,12 @@ repositories {
 
     // Dependencies' Maven
     exclusiveContent {
-        forRepositories(
-                maven {
-                    name "Architectury Mavenn"
-                    url "https://maven.architectury.dev/"
-                },
-                // Architectury for 26.1 exists but is not released officially.
-                flatDir {
-                    dir '../libs'
-                }
-        )
+        forRepository {
+            maven {
+                name "Architectury Mavenn"
+                url "https://maven.architectury.dev/"
+            }
+        }
         filter { includeGroupAndSubgroups('dev.architectury') }
     }
     exclusiveContent {
