@@ -14,6 +14,11 @@ public class ClientConfig {
     public static final ForgeConfigSpec.BooleanValue ENABLE_FIREBALL_TRAIL;
     public static final ForgeConfigSpec.BooleanValue ENABLE_FIREFLIES;
 
+    public static final ForgeConfigSpec.IntValue MAX_LIGHTNING_COUNT;
+    public static final ForgeConfigSpec.IntValue MAX_SMALL_EXPLOSION_COUNT;
+    public static final ForgeConfigSpec.IntValue MAX_LARGE_EXPLOSION_COUNT;
+    public static final ForgeConfigSpec.IntValue MAX_LOOT_BEAM_COUNT;
+
     static {
         var builder = new ForgeConfigSpec.Builder();
 
@@ -57,6 +62,34 @@ public class ClientConfig {
         ENABLE_FIREFLIES = builder
                 .comment("Whether to add visual-only fireflies in swamp biomes at night")
                 .define("enable_fireflies", true);
+
+        builder.push("limitation");
+        {
+            MAX_LIGHTNING_COUNT = builder
+                    .comment("""
+                            [Since 2.0.1]
+                            Max amount of lightning effeks that can play at one time""")
+                    .defineInRange("max_lightning_emitters", 8, 0, Integer.MAX_VALUE);
+
+            MAX_SMALL_EXPLOSION_COUNT = builder
+                    .comment("""
+                            [Since 2.0.1]
+                            Max amount of small explosion effeks that can play at one time""")
+                    .defineInRange("max_small_explosion_emitters", 240, 0, Integer.MAX_VALUE);
+
+            MAX_LARGE_EXPLOSION_COUNT = builder
+                    .comment("""
+                            [Since 2.0.1]
+                            Max amount of big explosion effeks that can play at one time""")
+                    .defineInRange("max_big_explosion_emitters", 120, 0, Integer.MAX_VALUE);
+
+            MAX_LOOT_BEAM_COUNT = builder
+                    .comment("""
+                            [Since 2.0.1]
+                            Max amount of loot beam effeks that can play at one time""")
+                    .defineInRange("max_loot_beam_emitters", 1024, 0, Integer.MAX_VALUE);
+        }
+        builder.pop();
 
         SPEC = builder.build();
     }

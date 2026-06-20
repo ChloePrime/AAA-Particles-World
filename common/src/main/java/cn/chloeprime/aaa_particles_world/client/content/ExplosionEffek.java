@@ -3,6 +3,7 @@ package cn.chloeprime.aaa_particles_world.client.content;
 import cn.chloeprime.aaa_particles_world.AAAParticlesWorldMod;
 import cn.chloeprime.aaa_particles_world.client.AAAParticlesWorldClient;
 import cn.chloeprime.aaa_particles_world.client.ClientConfig;
+import cn.chloeprime.aaa_particles_world.util.EffekLimiter;
 import mod.chloeprime.aaaparticles.api.client.util.VanillaParticleProxy;
 import mod.chloeprime.aaaparticles.api.common.AAALevel;
 import mod.chloeprime.aaaparticles.api.common.ParticleEmitterInfo;
@@ -47,6 +48,22 @@ public class ExplosionEffek {
 
     public static boolean isReplacingBigExplosion() {
         return ClientConfig.ENABLE_BIG_EXPLOSION.get() && AAAParticlesWorldClient.isEffekEnabled();
+    }
+
+    /**
+     * @since 2.0.1
+     */
+    public static boolean hasEnoughQuotaForLarge() {
+        return EffekLimiter.getCurrentPlayingCount(Type.BIG.effekId()) < ClientConfig.MAX_LARGE_EXPLOSION_COUNT.get();
+    }
+
+    /**
+     * @since 2.0.1
+     */
+    public static boolean hasEnoughQuotaForSmall() {
+        var yellowCount = EffekLimiter.getCurrentPlayingCount(Type.SMALL.effekId());
+        var blueCount = EffekLimiter.getCurrentPlayingCount(Type.DRAGON_SMALL.effekId());
+        return (yellowCount + blueCount) < ClientConfig.MAX_SMALL_EXPLOSION_COUNT.get();
     }
 
     public static void playExplosion(Type type, Level level, double x, double y, double z, float radius) {
