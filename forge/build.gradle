@@ -59,6 +59,9 @@ dependencies {
     // MixinExtras
     compileOnly(annotationProcessor("io.github.llamalad7:mixinextras-common:0.4.1"))
     runtimeOnly jarJar("io.github.llamalad7:mixinextras-forge:0.4.1")
+
+    // Configured
+    modRuntimeOnly "curse.maven:configured-457570:5180900"
 }
 
 jar {
