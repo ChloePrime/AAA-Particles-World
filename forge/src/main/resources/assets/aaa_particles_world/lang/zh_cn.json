@@ -7,5 +7,10 @@
   "aaa_particles_world.configuration.enable_loot_beam": "启用战利品光束",
   "aaa_particles_world.configuration.enable_loot_sound": "启用战利品落地音效",
   "aaa_particles_world.configuration.enable_fireball_trail": "启用火球尾焰特效",
-  "aaa_particles_world.configuration.enable_fireflies": "启用萤火虫特效"
+  "aaa_particles_world.configuration.enable_fireflies": "启用萤火虫特效",
+  "aaa_particles_world.configuration.limitation": "同时播放上限设置",
+  "aaa_particles_world.configuration.max_lightning_emitters": "闪电上限",
+  "aaa_particles_world.configuration.max_small_explosion_emitters": "小爆炸上限",
+  "aaa_particles_world.configuration.max_big_explosion_emitters": "大爆炸上限",
+  "aaa_particles_world.configuration.max_loot_beam_emitters": "战利品光束上限"
 }

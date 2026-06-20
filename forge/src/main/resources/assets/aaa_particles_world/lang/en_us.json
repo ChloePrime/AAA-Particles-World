@@ -7,5 +7,10 @@
   "aaa_particles_world.configuration.enable_loot_beam": "Enable Loot Beam VFX",
   "aaa_particles_world.configuration.enable_loot_sound": "Enable Item Drop Sound",
   "aaa_particles_world.configuration.enable_fireball_trail": "Enable Fireball Trail VFX",
-  "aaa_particles_world.configuration.enable_fireflies": "Enable Fireflies VFX"
+  "aaa_particles_world.configuration.enable_fireflies": "Enable Fireflies VFX",
+  "aaa_particles_world.configuration.limitation": "Concurrency Limit",
+  "aaa_particles_world.configuration.max_lightning_emitters": "Max Lightning Count",
+  "aaa_particles_world.configuration.max_small_explosion_emitters": "Max Small Explosion Count",
+  "aaa_particles_world.configuration.max_big_explosion_emitters": "Max Large Explosion Count",
+  "aaa_particles_world.configuration.max_loot_beam_emitters": "Max Loot Beam Count"
 }

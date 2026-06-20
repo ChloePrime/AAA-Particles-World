@@ -7,6 +7,7 @@
   "client": [
     "client.MixinClientPacketListener",
     "client.MixinHugeExplosionParticleProvider",
+    "client.MixinHugeExplosionSeedParticle",
     "client.MixinHugeExplosionSeedParticleProvider",
     "client.MixinItemEntity",
     "client.MixinLightningBoltRenderer",
