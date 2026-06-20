@@ -3,6 +3,7 @@ package cn.chloeprime.aaa_particles_world.client.content;
 import cn.chloeprime.aaa_particles_world.AAAParticlesWorldMod;
 import cn.chloeprime.aaa_particles_world.client.AAAParticlesWorldClient;
 import cn.chloeprime.aaa_particles_world.client.ClientConfig;
+import cn.chloeprime.aaa_particles_world.util.EffekLimiter;
 import mod.chloeprime.aaaparticles.api.common.AAALevel;
 import mod.chloeprime.aaaparticles.api.common.ParticleEmitterInfo;
 import net.minecraft.resources.Identifier;
@@ -13,6 +14,13 @@ public class LightningEffek {
 
     public static boolean isEnabled() {
         return ClientConfig.ENABLE_LIGHTNING.get() && AAAParticlesWorldClient.isEffekEnabled();
+    }
+
+    /**
+     * @since 2.0.1
+     */
+    public static boolean hasRemainingQuota() {
+        return EffekLimiter.getCurrentPlayingCount(LIGHTNING_EFFEK) < ClientConfig.MAX_LIGHTNING_COUNT.get();
     }
 
     public static void playLightningEffek(Entity bolt) {

@@ -4,6 +4,7 @@ import cn.chloeprime.aaa_particles_world.AAAParticlesWorldMod;
 import cn.chloeprime.aaa_particles_world.client.AAAParticlesWorldClient;
 import cn.chloeprime.aaa_particles_world.client.ClientConfig;
 import cn.chloeprime.aaa_particles_world.client.mc26_1.ItemRenderHelper26_1;
+import cn.chloeprime.aaa_particles_world.util.EffekLimiter;
 import mod.chloeprime.aaaparticles.api.client.EffectHolder;
 import mod.chloeprime.aaaparticles.api.client.EffectRegistry;
 import mod.chloeprime.aaaparticles.api.client.effekseer.ParticleEmitter;
@@ -35,7 +36,17 @@ public class LootBeamEffek {
         return ClientConfig.ENABLE_LOOT_BEAM.get() && AAAParticlesWorldClient.isEffekEnabled();
     }
 
+    /**
+     * @since 2.0.1
+     */
+    public static boolean hasEnoughQuota() {
+        return EffekLimiter.getCurrentPlayingCount(EFFEK_ID) < ClientConfig.MAX_LOOT_BEAM_COUNT.get();
+    }
+
     public static void playLootBeamEffek(ItemEntity entity) {
+        if (!hasEnoughQuota()) {
+            return;
+        }
         var item = entity.getItem();
         var color = getColor(item).orElse(null);
         if (color == null) {

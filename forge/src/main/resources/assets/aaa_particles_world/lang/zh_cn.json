@@ -10,5 +10,10 @@
   "aaa_particles_world.configuration.enable_fireflies": "启用萤火虫特效",
   "aaa_particles_world.configuration.poofs": "爆炸白烟设置",
   "aaa_particles_world.configuration.remove_poof_for_small_explosion": "移除小型爆炸所产生的白烟粒子",
-  "aaa_particles_world.configuration.remove_poof_for_big_explosion": "移除大型爆炸所产生的白烟粒子"
+  "aaa_particles_world.configuration.remove_poof_for_big_explosion": "移除大型爆炸所产生的白烟粒子",
+  "aaa_particles_world.configuration.limitation": "同时播放上限设置",
+  "aaa_particles_world.configuration.max_lightning_emitters": "闪电上限",
+  "aaa_particles_world.configuration.max_small_explosion_emitters": "小爆炸上限",
+  "aaa_particles_world.configuration.max_big_explosion_emitters": "大爆炸上限",
+  "aaa_particles_world.configuration.max_loot_beam_emitters": "战利品光束上限"
 }

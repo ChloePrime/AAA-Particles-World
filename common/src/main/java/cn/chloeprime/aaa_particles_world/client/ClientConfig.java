@@ -15,6 +15,11 @@ public class ClientConfig {
     public static final ModConfigSpec.BooleanValue ENABLE_FIREBALL_TRAIL;
     public static final ModConfigSpec.BooleanValue ENABLE_FIREFLIES;
 
+    public static final ModConfigSpec.IntValue MAX_LIGHTNING_COUNT;
+    public static final ModConfigSpec.IntValue MAX_SMALL_EXPLOSION_COUNT;
+    public static final ModConfigSpec.IntValue MAX_LARGE_EXPLOSION_COUNT;
+    public static final ModConfigSpec.IntValue MAX_LOOT_BEAM_COUNT;
+
     // MC26.1 stuff
     public static final ModConfigSpec.BooleanValue MC26_1_REMOVE_POOF_FOR_SMALL_EXPLOSION;
     public static final ModConfigSpec.BooleanValue MC26_1_REMOVE_POOF_FOR_LARGE_EXPLOSION;
@@ -62,6 +67,34 @@ public class ClientConfig {
         ENABLE_FIREFLIES = builder
                 .comment("Whether to add visual-only fireflies in swamp biomes at night")
                 .define("enable_fireflies", true);
+
+        builder.push("limitation");
+        {
+            MAX_LIGHTNING_COUNT = builder
+                    .comment("""
+                            [Since 2.0.1]
+                            Max amount of lightning effeks that can play at one time""")
+                    .defineInRange("max_lightning_emitters", 8, 0, Integer.MAX_VALUE);
+
+            MAX_SMALL_EXPLOSION_COUNT = builder
+                    .comment("""
+                            [Since 2.0.1]
+                            Max amount of small explosion effeks that can play at one time""")
+                    .defineInRange("max_small_explosion_emitters", 240, 0, Integer.MAX_VALUE);
+
+            MAX_LARGE_EXPLOSION_COUNT = builder
+                    .comment("""
+                            [Since 2.0.1]
+                            Max amount of big explosion effeks that can play at one time""")
+                    .defineInRange("max_big_explosion_emitters", 120, 0, Integer.MAX_VALUE);
+
+            MAX_LOOT_BEAM_COUNT = builder
+                    .comment("""
+                            [Since 2.0.1]
+                            Max amount of loot beam effeks that can play at one time""")
+                    .defineInRange("max_loot_beam_emitters", 1024, 0, Integer.MAX_VALUE);
+        }
+        builder.pop();
 
         builder.push("poofs");
         {
