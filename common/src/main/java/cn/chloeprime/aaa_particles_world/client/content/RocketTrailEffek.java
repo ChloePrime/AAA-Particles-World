@@ -58,7 +58,7 @@ public final class RocketTrailEffek {
         if (entity == null || !entity.level().isClientSide()) {
             return;
         }
-        if (entity.isInvisible() || !isEnabledFor(entity)) {
+        if (!isEnabledFor(entity) || entity.isInvisible()) {
             return;
         }
         if (!isEnabled()) {
