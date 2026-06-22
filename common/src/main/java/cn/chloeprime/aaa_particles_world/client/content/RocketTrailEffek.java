@@ -55,7 +55,7 @@ public final class RocketTrailEffek {
     }
 
     private static void onEntityJoinLevel(Entity entity) {
-        if (!entity.level().isClientSide()) {
+        if (entity == null || !entity.level().isClientSide()) {
             return;
         }
         if (entity.isInvisible() || !isEnabledFor(entity)) {
