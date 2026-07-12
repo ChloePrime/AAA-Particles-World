@@ -13,6 +13,9 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(ClientPacketListener.class)
 public class MixinExplosion {
+    // 这里的替换拥有精确的爆炸大小信息，
+    // 动态调整爆炸大小是替换 Provider 无法实现的，
+    // 所以请勿删除该方法！
     @WrapOperation(
             method = "handleExplosion",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/client/multiplayer/ClientLevel;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
@@ -39,6 +42,9 @@ public class MixinExplosion {
             }
             type = ExplosionEffek.Type.SMALL;
         }
-        ExplosionEffek.playExplosion(type, level, x, y, z, packet.radius());
+        // 将 radius 应用到特效时偏小
+        // 所以这里放大一下 :)
+        var visualRadius = packet.radius() * 1.75F;
+        ExplosionEffek.playExplosion(type, level, x, y, z, visualRadius);
     }
 }
