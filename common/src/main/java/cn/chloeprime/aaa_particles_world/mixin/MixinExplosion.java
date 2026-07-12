@@ -14,6 +14,9 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(Explosion.class)
 public class MixinExplosion {
+    // 这里的替换拥有精确的爆炸大小信息，
+    // 动态调整爆炸大小是替换 Provider 无法实现的，
+    // 所以请勿删除该方法！
     @WrapOperation(
             method = "finalizeExplosion",
             at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addParticle(Lnet/minecraft/core/particles/ParticleOptions;DDDDDD)V"))
@@ -43,7 +46,10 @@ public class MixinExplosion {
             }
             type = ExplosionEffek.Type.SMALL;
         }
-        ExplosionEffek.playExplosion(type, level, x, y, z, radius);
+        // 将 radius 应用到特效时偏小
+        // 所以这里放大一下 :)
+        var visualRadius = this.radius * 1.75F;
+        ExplosionEffek.playExplosion(type, level, x, y, z, visualRadius);
     }
 
     @Shadow @Final private float radius;
