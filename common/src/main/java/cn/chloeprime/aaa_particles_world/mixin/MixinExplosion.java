@@ -24,11 +24,8 @@ public class MixinExplosion {
             Level level, ParticleOptions vanillaExplosion, double x, double y, double z, double dx, double dy, double dz, Operation<Void> original,
             boolean spawnParticles
     ) {
-        if (!spawnParticles) {
-            return;
-        }
         var vanilla = (Runnable) () -> original.call(level, vanillaExplosion, x, y, z, dx, dy, dz);
-        if (!ExplosionEffek.isEnabled()) {
+        if (!level.isClientSide() || !ExplosionEffek.isEnabled()) {
             vanilla.run();
             return;
         }
