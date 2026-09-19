@@ -10,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Entity;
 
 public class LightningEffek {
-    public static final ResourceLocation LIGHTNING_EFFEK = AAAParticlesWorldMod.loc("lightning");
+    public static final ResourceLocation LIGHTNING_EFFEK = AAAParticlesWorldMod.loc("lightning/main");
 
     public static boolean isEnabled() {
         return ClientConfig.ENABLE_LIGHTNING.get() && AAAParticlesWorldClient.isEffekEnabled();

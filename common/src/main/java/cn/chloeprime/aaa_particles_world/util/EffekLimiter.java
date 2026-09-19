@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceLocation;
 import org.jetbrains.annotations.ApiStatus;
 
 import java.util.*;
+import java.util.stream.Stream;
 
 /**
  * @since 2.0.1
@@ -17,9 +18,22 @@ public final class EffekLimiter {
         return Optional.ofNullable(EffectRegistry.get(effekId))
                 .flatMap(EffectHolder::lazyGet)
                 .stream()
+                .flatMap(EffekLimiter::getAllVariants)
                 .flatMap(EffectDefinition::emitterContainers)
                 .mapToInt(Collection::size)
                 .sum();
+    }
+
+    private static Stream<EffectDefinition> getAllVariants(EffectDefinition main) {
+        var subs = main.getMetadata().getRoutingSettings()
+                .map(Map::values)
+                .stream()
+                .flatMap(Collection::stream)
+                .flatMap(routing -> routing.targetId().stream())
+                .map(EffectRegistry::get)
+                .filter(Objects::nonNull)
+                .flatMap(holder -> holder.lazyGet().stream());
+        return Stream.concat(Stream.of(main), subs);
     }
 
     @ApiStatus.Internal

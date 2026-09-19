@@ -1,0 +1,6 @@
+{
+  "routing": {
+    "low": "aaa_particles_world:explosion_mini/yellow_low",
+    "medium": "aaa_particles_world:explosion_mini/yellow_medium"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "routing": {
+    "low": "aaa_particles_world:lightning/low",
+    "high": "aaa_particles_world:lightning/high"
+  }
+}

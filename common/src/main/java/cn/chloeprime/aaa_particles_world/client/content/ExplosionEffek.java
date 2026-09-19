@@ -34,7 +34,7 @@ public class ExplosionEffek {
     public static final float SMALL_VANILLA_EXPLOSION_SIZE = 1;
     public static final float SMALL_DRAGON_EXPLOSION_SIZE = 2.5F;
 
-    public static final ResourceLocation BIG_EXPLOSION_EFFEK = AAAParticlesWorldMod.loc("explosion");
+    public static final ResourceLocation BIG_EXPLOSION_EFFEK = AAAParticlesWorldMod.loc("explosion/main");
     public static final ResourceLocation SMALL_EXPLOSION_EFFEK = AAAParticlesWorldMod.loc("explosion_mini/yellow");
     public static final ResourceLocation SMALL_EXPLOSION_EFFEK_BLUE = AAAParticlesWorldMod.loc("explosion_mini/blue");
 

@@ -1,0 +1,10 @@
+{
+  "finalization": {
+    "trigger": 3,
+    "delay": 100
+  },
+  "routing": {
+    "lowest": "aaa_particles_world:missile_boost/lowest",
+    "medium": "aaa_particles_world:missile_boost/medium"
+  }
+}

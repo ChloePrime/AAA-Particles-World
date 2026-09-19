@@ -15,14 +15,14 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 public final class RocketTrailEffek {
-    public static final ResourceLocation ID = AAAParticlesWorldMod.loc("missile_boost");
+    public static final ResourceLocation ID = AAAParticlesWorldMod.loc("missile_boost/main");
     public static final float SCALE = 0.3F;
 
     public static boolean isEnabled() {
         if (!ClientConfig.ENABLE_FIREBALL_TRAIL.get()) {
             return false;
         }
-        return !AAAParticlesWorldClient.isEffekReduced() && AAAParticlesWorldClient.isEffekEnabled();
+        return AAAParticlesWorldClient.isEffekEnabled();
     }
 
     public static boolean isEnabledFor(Entity entity) {

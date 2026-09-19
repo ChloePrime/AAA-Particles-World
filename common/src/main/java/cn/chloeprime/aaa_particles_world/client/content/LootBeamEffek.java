@@ -28,7 +28,7 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class LootBeamEffek {
-    public static final ResourceLocation EFFEK_ID = AAAParticlesWorldMod.loc("loot_beam");
+    public static final ResourceLocation EFFEK_ID = AAAParticlesWorldMod.loc("loot_beam/main");
     public static final boolean FLOATS_WITH_ITEM = false;
 
     public static boolean isEnabled() {
